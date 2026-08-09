@@ -17,9 +17,16 @@ Geplant ist ein Setup mit:
 Aktuell im Repo:
 
 - technische Analyse der Referenzinstallation in [INSTALLATION_ANALYSE.md](/Users/yorkvonloew/Documents/Codex/Pi4-Ants/INSTALLATION_ANALYSE.md)
-- erste Pi-taugliche Demo in [src/ants_display_demo.py](/Users/yorkvonloew/Documents/Codex/Pi4-Ants/src/ants_display_demo.py)
+- erste Pi-taugliche Kamera-Demo in [src/ants_display_demo.py](/Users/yorkvonloew/Documents/Codex/Pi4-Ants/src/ants_display_demo.py)
 
-Die Demo laeuft bereits ohne Kamera und bildet den kuenftigen Render-Loop ab.
+Die Demo nutzt bereits:
+
+- USB-Kamera via `OpenCV`
+- gespiegeltes Livebild
+- einfache Hintergrund-/Bewegungsmaske
+- Ameisen mit Trail-Feld, die auf erkannte Zielpunkte reagieren
+
+Falls keine Kamera-Ziele erkannt werden, faellt die Demo auf Maussteuerung zurueck.
 
 ## Start auf dem Raspberry Pi
 
@@ -42,12 +49,13 @@ python3 src/ants_display_demo.py
 
 - `f`: Fullscreen umschalten
 - `r`: Ameisen neu verteilen
+- `c`: Hintergrundmodell neu anlernen
 - `Esc`: beenden
-- Mausbewegung: simuliert vorerst den spaeteren Kamerafokus
+- Mausbewegung: Fallback-Ziel, wenn keine Kamera-Ziele aktiv sind
 
 ## Naechste Schritte
 
-1. Brio 500 anschliessen und mit `v4l2-ctl --list-devices` pruefen
-2. OpenCV-Kameraeingang anbinden
-3. erste Kontrast- oder Silhouettenmaske erzeugen
-4. Ameisen auf Zielkarte statt Mausposition reagieren lassen
+1. Parameter der Zielmasken fuer verschiedene Kameras feinjustieren
+2. mehrere Ameisen-Spawn-Zonen statt rein zufaelliger Verteilung
+3. Dichtefeld naeher an die Referenzinstallation bringen
+4. Brio 500 spaeter als Hauptkamera einmessen
